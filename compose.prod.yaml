@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.3"
 
 services:
   web:
@@ -16,7 +16,7 @@ services:
       - db
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.django.rule=Host(`django.localhost`)"
+      - "traefik.http.routers.django.rule=Host(`35.184.160.126`)"
   db:
     image: postgres:15-alpine
     volumes:
@@ -29,7 +29,7 @@ services:
       - 80:80
       - 8080:8080
     volumes:
-      - "$PWD/traefik.dev.toml:/etc/traefik/traefik.toml"
+      - "./traefik.dev.toml:/etc/traefik/traefik.toml"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
 
 volumes:
